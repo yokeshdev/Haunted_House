@@ -111,7 +111,53 @@ Everytime user enters a new room, give the description of the room.
 '''
 def go_to(tokens):
     direction = tokens[tokens.index("go") + 1]
-    pass
+
+# Define a dictionary to represent the rooms and their descriptions
+rooms = {
+    'kitchen': 'You are in the kitchen. It smells like freshly baked bread.',
+    'living_room': 'You are in the living room. There is a cozy fireplace.',
+    'bedroom': 'You are in the bedroom. The bed is neatly made.',
+    'bathroom': 'You are in the bathroom. '
+}
+
+# Function to handle rats (example implementation)
+def handle_rats():
+    rats_exist = input("Are there rats in this room? (yes/no): ")
+    return rats_exist.lower() == 'yes'
+
+# Function to move to a different room based on the direction
+def move(direction):
+    current_room = input("Enter the current room: ").lower()
+    
+    # Check if the current room exists in the dictionary
+    if current_room in rooms:
+        # Call handle_rats function to check for rats
+        rats_exist = handle_rats()
+        
+        # Determine the next room based on the direction
+        if direction == 'north':
+            next_room = 'kitchen'
+        elif direction == 'south':
+            next_room = 'living_room'
+        elif direction == 'east':
+            next_room = 'bedroom'
+        elif direction == 'west':
+            next_room = 'bathroom'
+        else:
+            print("Invalid direction. Please enter 'north', 'south', 'east', or 'west'.")
+            return
+        
+        # Display the description of the next room
+        print(rooms[next_room])
+        
+        # Check for rats in the next room
+        if rats_exist:
+            print("There are rats in this room!")
+
+    else:
+        print("Invalid room name. Please enter a valid room.")
+
+
 
 '''
 Write a function to talk to the npcs.
