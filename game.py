@@ -95,8 +95,13 @@ If user has bread with them, the rats will attack the user.
 The user looses 30 points. 
 Return a string of appropiate msg if rats exists else return None 
 '''
-def handle_rats():
-    pass
+
+def handle_rats(tokens):
+    if "bread" in inventory:
+        score-=30
+        return "Rat exists"
+    return "None"
+
 
 
 
